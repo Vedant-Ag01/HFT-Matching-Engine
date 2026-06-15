@@ -1,12 +1,9 @@
+#pragma once
 #include <vector>
 #include <unordered_map>
 #include <utility>
 #include <cstdint>
-
-struct Order {
-    int orderId;
-    int64_t price;
-};
+#include "Order.h"
 
 class AskMatchingEngine {
 private:
@@ -83,4 +80,14 @@ public:
         }
     }
     bool isHeapEmpty() const { return heap.empty(); }
+
+    int64_t getTopPrice() const { 
+        if (heap.empty()) return -1; 
+        return heap[0].price; 
+    }
+
+    int getTopOrderId() const { 
+        if (heap.empty()) return -1; 
+        return heap[0].orderId; 
+    }
 };
